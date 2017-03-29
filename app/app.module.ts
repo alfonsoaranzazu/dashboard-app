@@ -12,10 +12,12 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {AuthenticationComponent} from "./authentication/authentication.component";
+import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 
 @NgModule({
     imports:      [
         BrowserModule,
+        Ng2Bs3ModalModule,
         DashboardModule,
         SidebarModule,
         NavbarModule,
