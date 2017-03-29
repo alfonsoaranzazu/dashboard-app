@@ -12,6 +12,13 @@ export class EmployeeService {
         this.headers = new Headers({'content-type': 'application/json'});
     }
     
+    public createEmployee(name, phone, supervisor) {
+        let createEmployeeUrl = employeeApi + '?name=' + name + '&phone=' + phone + '&supervisors=' + supervisor;
+        return this.http.post(createEmployeeUrl, {headers: this.headers})
+            .map(res => res.json())
+            .toPromise();
+    }
+    
     public getEmployees() {
         return this.http.get(employeeApi, {headers: this.headers})
             .map(res => res.json())
