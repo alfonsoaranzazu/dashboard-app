@@ -1,5 +1,6 @@
 import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 import initDemo = require('../../../assets/js/charts.js');
+import {EmployeeService} from "../../services/employee-service";
 
 declare var $:any;
 
@@ -10,13 +11,23 @@ declare var $:any;
 })
 
 export class HomeComponent implements OnInit{
+    public employeeList: any;
+    public recentEmployee: string;
+    
+    constructor(private employeeService: EmployeeService) {
+        this.employeeList = [];
+        this.recentEmployee = '';
+    }
+    
     ngOnInit(){
-        // $('[data-toggle="checkbox"]').each(function () {
-        //     if($(this).data('toggle') == 'switch') return;
-        //
-        //     var $checkbox = $(this);
-        //     $checkbox.checkbox();
-        // });
         initDemo();
+        
+        console.log('ng On Init for Home Comp');
+        this.employeeService.getEmployees()
+            .then((employees) => {
+                console.log('employees: ', employees);
+                this.employeeList = employees;
+                this.recentEmployee = this.employeeList[this.employeeList.length-1].name;
+            });
     }
 }
