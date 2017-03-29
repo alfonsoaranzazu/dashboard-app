@@ -11,6 +11,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {AuthenticationComponent} from "./authentication/authentication.component";
 
 @NgModule({
     imports:      [
@@ -21,7 +22,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
         FooterModule,
         RouterModule.forRoot([])
     ],
-    declarations: [ AppComponent, DashboardComponent ],
+    declarations: [ AppComponent, AuthenticationComponent, DashboardComponent ],
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap:    [ AppComponent ]
 })
