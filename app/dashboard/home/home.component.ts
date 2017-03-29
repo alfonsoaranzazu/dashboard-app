@@ -21,13 +21,27 @@ export class HomeComponent implements OnInit{
     
     ngOnInit(){
         initDemo();
-        
-        console.log('ng On Init for Home Comp');
+        this.updateDashboard();
+    }
+    
+    private updateDashboard() {
         this.employeeService.getEmployees()
             .then((employees) => {
-                console.log('employees: ', employees);
                 this.employeeList = employees;
                 this.recentEmployee = this.employeeList[this.employeeList.length-1].name;
+            })
+            .catch(() => {
+                // TODO handle errors
+            });
+    }
+
+    public deleteEmployee(employee) {
+        this.employeeService.deleteEmployee(employee.id)
+            .then(() => {
+                this.updateDashboard();
+            })
+            .catch(() => {
+                // TODO handle errors
             });
     }
 }

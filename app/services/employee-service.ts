@@ -6,14 +6,21 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 
 export class EmployeeService {
+    private headers: any;
     
     constructor(public http: Http) {
-           
+        this.headers = new Headers({'content-type': 'application/json'});
     }
     
     public getEmployees() {
-        let headers = new Headers({'content-type': 'application/json'});
-        return this.http.get(employeeApi, {headers: headers})
+        return this.http.get(employeeApi, {headers: this.headers})
+            .map(res => res.json())
+            .toPromise();
+    }
+    
+    public deleteEmployee(id) {
+        let deleteEmployeeUrl = employeeApi + '?id=' + id;
+        return this.http.delete(deleteEmployeeUrl, {headers: this.headers})
             .map(res => res.json())
             .toPromise();
     }
