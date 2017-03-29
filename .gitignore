@@ -46,10 +46,9 @@ jspm_packages
 *.tgz
 
 # Output of typescript compilation
+app/*.js
 app/*/*.js
 app/*/*.*.js.map
-app/*/*/*.js
-app/*/*/*.js.map
 
 # JetBrains
 .idea
