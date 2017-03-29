@@ -45,6 +45,12 @@ jspm_packages
 # Output of 'npm pack'
 *.tgz
 
+# Output of typescript compilation
+app/*/*.js
+app/*/*.*.js.map
+app/*/*/*.js
+app/*/*/*.js.map
+
 # JetBrains
 .idea
 

@@ -24,12 +24,4 @@ export class AppComponent implements OnInit{
         });
 
     }
-    public isMaps(path){
-        if(path == window.location.pathname){
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 }
