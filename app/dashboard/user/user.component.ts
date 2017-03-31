@@ -25,7 +25,6 @@ export class UserComponent {
                 } else {
                     this.notification.presentErrorNotification("Employee already exists");
                 }
-                
             })
             .catch(() => {
                 this.notification.presentErrorNotification("There was a problem creating the employee");
