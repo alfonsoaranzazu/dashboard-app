@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit{
         this.employeeService.getEmployees()
             .then((employees) => {
                 this.employeeList = employees;
-                this.recentEmployee = this.employeeList[this.employeeList.length-1].name;
+                this.recentEmployee = this.employeeList[this.employeeList.length-1];
             })
             .catch(() => {
                 this.notification.presentErrorNotification("There was a problem loading employees");
