@@ -22,7 +22,7 @@
                 </li>
             </ul>
 
-            <form class="navbar-form navbar-right" role="search">
+            <div class="navbar-form navbar-right" role="search">
                 <div class="form-group form-black is-empty">
                     <input #query type="text" class="form-control" placeholder="Search" (keyup)="searchEmployees(query.value)">
                     <span class="material-input"></span>
@@ -30,7 +30,7 @@
                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
                     <i class="material-icons">search</i><div class="ripple-container"></div>
                 </button>
-            </form>
+            </div>
         </div>
     </div>
 </nav>
