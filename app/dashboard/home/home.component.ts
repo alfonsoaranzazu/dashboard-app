@@ -2,8 +2,6 @@ import { Component, OnInit, trigger, state, style, transition, animate } from '@
 import initDemo = require('../../../assets/js/charts.js');
 import {EmployeeService} from "../../services/employee-service";
 
-declare var $:any;
-
 @Component({
     selector: 'home-cmp',
     moduleId: module.id,
@@ -13,6 +11,7 @@ declare var $:any;
 export class HomeComponent implements OnInit{
     public employeeList: any;
     public recentEmployee: string;
+    public editRowId: any;
     
     constructor(private employeeService: EmployeeService) {
         this.employeeList = [];
@@ -20,7 +19,6 @@ export class HomeComponent implements OnInit{
     }
     
     ngOnInit(){
-        initDemo();
         this.updateDashboard();
     }
     
@@ -34,6 +32,28 @@ export class HomeComponent implements OnInit{
                 // TODO handle errors
             });
     }
+    
+    public editEmployee(employeeId) {
+        this.editRowId = employeeId;
+    }
+    
+    public updateEmployee(employee) {
+        console.log('updated employee: ', employee);
+        
+        this.employeeService.updateEmployee(employee.id, employee.name, employee.phone, employee.supervisors)
+            .then(() => {
+                this.editRowId = -1;
+                this.updateDashboard();
+            })
+            .catch(() => {
+                this.editRowId = -1;
+                this.updateDashboard();
+            });
+    }
+    
+    public rowIdsMatch(employeeId) {
+        return employeeId === this.editRowId;
+    }
 
     public deleteEmployee(employee) {
         this.employeeService.deleteEmployee(employee.id)
@@ -41,7 +61,7 @@ export class HomeComponent implements OnInit{
                 this.updateDashboard();
             })
             .catch(() => {
-                // TODO handle errors
+                this.updateDashboard();
             });
     }
 }

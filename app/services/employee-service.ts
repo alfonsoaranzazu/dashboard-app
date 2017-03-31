@@ -25,6 +25,13 @@ export class EmployeeService {
             .toPromise();
     }
     
+    public updateEmployee(id, name, phone, supervisor) {
+        let updateEmployeeUrl = employeeApi + '?id=' + id + '&name=' + name + '&phone=' + phone + '&supervisors=' + supervisor;
+        return this.http.put(updateEmployeeUrl, {headers: this.headers})
+            .map(res => res.json())
+            .toPromise();
+    }
+    
     public deleteEmployee(id) {
         let deleteEmployeeUrl = employeeApi + '?id=' + id;
         return this.http.delete(deleteEmployeeUrl, {headers: this.headers})

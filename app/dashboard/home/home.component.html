@@ -89,12 +89,30 @@
                                 <tbody>
                                     <tr *ngFor="let employee of employeeList">
                                         <td>{{employee.id}}</td>
-                                        <td>{{employee.name}}</td>
-                                        <td>{{employee.phone}}</td>
-                                        <td>{{employee.supervisors}}</td>
+                                        
+                                        <!--if viewing-->
+                                        <td *ngIf="!rowIdsMatch(employee.id)" id="employeeName">{{employee.name}}</td>
+                                        <td *ngIf="!rowIdsMatch(employee.id)" id="employeePhone">{{employee.phone}}</td>
+                                        <td *ngIf="!rowIdsMatch(employee.id)" id="employeeSupervisor">{{employee.supervisors}}</td>
+
+
+                                        <!--if editing-->
+                                        <td *ngIf="rowIdsMatch(employee.id)">
+                                            <input type="text" placeholder="{{employee.name}}" [(ngModel)]="employee.name">
+                                        </td>
+                                        <td *ngIf="rowIdsMatch(employee.id)">
+                                            <input type="text" placeholder="{{employee.phone}}" [(ngModel)]="employee.phone">
+                                        </td>
+                                        <td *ngIf="rowIdsMatch(employee.id)">
+                                            <input type="text" placeholder="{{employee.supervisors}}" [(ngModel)]="employee.supervisors">
+                                        </td>
+                                        
                                         <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-simple btn-xs">
+                                            <button type="button" rel="tooltip" title="Edit" class="btn btn-primary btn-simple btn-xs" (click)="editEmployee(employee.id)">
                                                 <i class="material-icons">edit</i>
+                                            </button>
+                                            <button type="button" rel="tooltip" title="Save" class="btn btn-primary btn-simple btn-xs" (click)="updateEmployee(employee)">
+                                                <i class="material-icons">save</i>
                                             </button>
                                             <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs" (click)="deleteEmployee(employee)">
                                                 <i class="material-icons">close</i>
