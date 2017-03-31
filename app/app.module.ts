@@ -15,6 +15,7 @@ import {AuthenticationComponent} from "./authentication/authentication.component
 import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 import {EmployeeService} from "./services/employee-service";
 import {HttpModule} from "@angular/http";
+import {NotificationService} from "./services/notifications-service";
 
 @NgModule({
     imports:      [
@@ -28,7 +29,7 @@ import {HttpModule} from "@angular/http";
         RouterModule.forRoot([])
     ],
     declarations: [ AppComponent, AuthenticationComponent, DashboardComponent ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EmployeeService],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EmployeeService, NotificationService],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

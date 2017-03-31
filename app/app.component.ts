@@ -17,19 +17,8 @@ export class AppComponent implements OnInit{
     constructor(location: PlatformLocation) {
 
         location.onPopState(() => {
-            // $('.sidebar-wrapper .nav-container div').removeClass('.moving-tab');
-            // $.getScript('../assets/js/material-dashboard-angular.js');
-            console.log('pressed back!');
 
         });
 
-    }
-    public isMaps(path){
-        if(path == window.location.pathname){
-            return false;
-        }
-        else {
-            return true;
-        }
     }
 }
