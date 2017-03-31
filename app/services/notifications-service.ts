@@ -14,7 +14,7 @@ export class NotificationService {
 
         },{
             type: 'success',
-            timer: 4000,
+            timer: 500,
             placement: {
                 from: 'top',
                 align: 'center'
@@ -29,7 +29,7 @@ export class NotificationService {
 
         },{
             type: 'danger',
-            timer: 4000,
+            timer: 500,
             placement: {
                 from: 'top',
                 align: 'center'

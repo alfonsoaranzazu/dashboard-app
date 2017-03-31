@@ -16,10 +16,13 @@ import {Ng2Bs3ModalModule} from "ng2-bs3-modal/ng2-bs3-modal";
 import {EmployeeService} from "./services/employee-service";
 import {HttpModule} from "@angular/http";
 import {NotificationService} from "./services/notifications-service";
+import {AuthService} from "./services/auth-service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     imports:      [
         BrowserModule,
+        FormsModule,
         HttpModule,
         Ng2Bs3ModalModule,
         DashboardModule,
@@ -29,7 +32,7 @@ import {NotificationService} from "./services/notifications-service";
         RouterModule.forRoot([])
     ],
     declarations: [ AppComponent, AuthenticationComponent, DashboardComponent ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EmployeeService, NotificationService],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, AuthService, EmployeeService, NotificationService],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
