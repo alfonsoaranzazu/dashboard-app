@@ -21,7 +21,7 @@ export class UserComponent {
                 if (response.success) {
                     this.notification.presentSuccessNotification("Employee created");
                     // make dashboard link on sidebar active
-                    $("body > my-app > div > div.sidebar > sidebar-cmp > div.sidebar-wrapper > div > ul > li:nth-child(1) > a > p").trigger("click");
+                    $("div.sidebar-wrapper > div > ul > li:nth-child(1) > a > p").trigger("click");
                 } else {
                     this.notification.presentErrorNotification("Employee already exists");
                 }
