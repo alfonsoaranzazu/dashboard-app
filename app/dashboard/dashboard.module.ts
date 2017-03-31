@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './dashboard.routes';
 import {BrowserModule} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
+import {SearchPipe} from "../pipes/search";
 
 @NgModule({
     imports: [
@@ -10,7 +11,7 @@ import {FormsModule} from "@angular/forms";
         FormsModule,
         RouterModule.forChild(MODULE_ROUTES)
     ],
-    declarations: [ MODULE_COMPONENTS ]
+    declarations: [ MODULE_COMPONENTS, SearchPipe ]
 })
 
 export class DashboardModule{}

@@ -54,7 +54,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let employee of employeeList">
+                                    <tr *ngFor="let employee of employeeList | SearchPipe:queryString">
                                         <td>{{employee.id}}</td>
                                         
                                         <!--if viewing-->

@@ -18,6 +18,7 @@ import {HttpModule} from "@angular/http";
 import {NotificationService} from "./services/notifications-service";
 import {AuthService} from "./services/auth-service";
 import {FormsModule} from "@angular/forms";
+import {SearchService} from "./services/search-service";
 
 @NgModule({
     imports:      [
@@ -32,7 +33,7 @@ import {FormsModule} from "@angular/forms";
         RouterModule.forRoot([])
     ],
     declarations: [ AppComponent, AuthenticationComponent, DashboardComponent ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, AuthService, EmployeeService, NotificationService],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, AuthService, EmployeeService, NotificationService, SearchService],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

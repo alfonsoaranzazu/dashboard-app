@@ -2,6 +2,7 @@ import { Component, OnInit, trigger, state, style, transition, animate } from '@
 import initDemo = require('../../../assets/js/charts.js');
 import {EmployeeService} from "../../services/employee-service";
 import {NotificationService} from "../../services/notifications-service";
+import {SearchService} from "../../services/search-service";
 
 @Component({
     selector: 'home-cmp',
@@ -13,14 +14,21 @@ export class HomeComponent implements OnInit{
     public employeeList: any;
     public recentEmployee: string;
     public editRowId: any;
+    public queryString: string;
     
-    constructor(private employeeService: EmployeeService, private notification: NotificationService) {
+    constructor(private employeeService: EmployeeService, private notification: NotificationService, private search: SearchService) {
         this.employeeList = [];
         this.recentEmployee = '';
+        this.queryString = '';
+        this.search.query.subscribe(query => this.onQuerySearched(query));
     }
     
     ngOnInit(){
         this.updateDashboard();
+    }
+    
+    private onQuerySearched(query) {
+        this.queryString = query;
     }
     
     private updateDashboard() {

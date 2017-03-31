@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ROUTES } from '../.././sidebar/sidebar-routes.config';
 import { MenuType } from '../.././sidebar/sidebar.metadata';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import {SearchService} from "../../services/search-service";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +13,7 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class NavbarComponent implements OnInit{
     private listTitles: any[];
     location: Location;
-    constructor(location:Location) {
+    constructor(location:Location, private search: SearchService) {
         this.location = location;
     }
     ngOnInit(){
@@ -29,5 +30,9 @@ export class NavbarComponent implements OnInit{
             }
         }
         return 'Dashboard';
+    }
+    
+    public searchEmployees(query) {
+        this.search.addQuery(query);
     }
 }
