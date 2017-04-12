@@ -49,7 +49,7 @@ jspm_packages
 app/*.js
 app/*/*.js
 app/*/*.*.js.map
-
+app/*/*/*.js
 # JetBrains
 .idea
 
