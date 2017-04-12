@@ -19,7 +19,7 @@ Install Module Dependencies
 npm install
 ```
 
-Running the app on `http://localhost:3000`
+Running the app locally on port [3000](http://localhost:3000)
 ```
 npm start
 ```
